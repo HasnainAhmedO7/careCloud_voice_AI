@@ -1,0 +1,18 @@
+{
+  "dispatch_rule": {
+    "rule": {
+      "dispatchRuleIndividual": {
+        "roomPrefix": "reg-"
+      }
+    },
+    "name": "second_rule",
+    "trunk_ids": ["PN_PPN_ETmFDXEab57g"],
+    "roomConfig": {
+      "agents": [
+        {
+          "agentName": "telephony_agent"
+        }
+      ]
+    }
+  }
+}

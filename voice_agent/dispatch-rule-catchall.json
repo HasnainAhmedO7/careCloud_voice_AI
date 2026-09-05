@@ -1,0 +1,17 @@
+{
+  "dispatch_rule": {
+    "rule": {
+      "dispatchRuleIndividual": {
+        "roomPrefix": "call-"
+      }
+    },
+    "name": "catchall_cli_rule",
+    "roomConfig": {
+      "agents": [
+        {
+          "agentName": "telephony_agent"
+        }
+      ]
+    }
+  }
+}
