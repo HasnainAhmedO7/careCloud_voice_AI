@@ -15,6 +15,7 @@ from livekit.agents import (
     inference,
 )
 from livekit.agents.llm import ToolError
+from livekit.plugins import openai
 
 load_dotenv(".env.local")
 load_dotenv(".env")
@@ -233,7 +234,9 @@ async def entrypoint(ctx: JobContext):
     session = AgentSession(
         vad=inference.VAD(),
         stt=inference.STT("deepgram/nova-3", language="en"),
-        llm=inference.LLM("google/gemma-4-31b-it"),
+        # Explicit OpenAI plugin (rather than the managed-inference LLM) for
+        # more reliable multi-turn tool-calling on the confirm/correct flow.
+        llm=openai.LLM(model="gpt-4o-mini"),
         tts=inference.TTS("cartesia/sonic-3", voice="9626c31c-bec5-4cca-baa8-f8ba9e84c8bc"),
     )
     await session.start(agent=PatientIntakeAgent(), room=ctx.room)
